@@ -13,10 +13,10 @@ namespace Karetních_21
             Random nahodnaCisla = new Random();
             int kartyHrace = nahodnaCisla.Next(1, 12);
             int kartyPC = nahodnaCisla.Next(1, 12);
-            DalsiKarta:
-            Console.WriteLine("Chcete další kartu?? ano/ne Máte " + kartyHrace);
+        DalsiKarta:
+            Console.WriteLine("Do you wan another card?? yes/no You have: " + kartyHrace);
             string volba = Console.ReadLine();
-            if (volba == "ano")
+            if (volba == "yes")
             {
                 kartyHrace += nahodnaCisla.Next(1, 12);
                 if (kartyPC < 15)
@@ -25,39 +25,39 @@ namespace Karetních_21
                 }
                 goto DalsiKarta;
             }
-            else if (volba =="ne")
+            else if (volba == "no")
             {
 
                 /*System.Threading.Thread.Sleep(1000);*/
-                if(kartyHrace<=21 && (kartyPC>21 || kartyPC < kartyHrace))
-                { 
-                    Console.WriteLine("Vyhrál jsi!! Počítač měl " + kartyPC + " bodů!");
-                }
-                else if(kartyHrace<=21 && (kartyPC > 21 || kartyPC > kartyHrace))
+                if (kartyHrace <= 21 && (kartyPC > 21 || kartyPC < kartyHrace))
                 {
-                    Console.WriteLine("Prohrál jsi!! Počítač měl " + kartyPC + " bodů!");
+                    Console.WriteLine("You won!! AI had " + kartyPC + " points!");
                 }
-                else if(kartyPC> 21 && kartyHrace>21)
+                else if (kartyHrace <= 21 && (kartyPC > 21 || kartyPC > kartyHrace))
                 {
-                    Console.WriteLine("Oba hráči prohráli!! Počítač měl " + kartyPC + " bodů!");
+                    Console.WriteLine("You lost!! AI had " + kartyPC + " points!");
                 }
-                
-                else if(kartyHrace==kartyPC)
+                else if (kartyPC > 21 && kartyHrace > 21)
                 {
-                    Console.WriteLine("Nikdo nevyhrál!!");
+                    Console.WriteLine("Both players are lost!! AI had " + kartyPC + " points!");
                 }
-                else if(kartyHrace>21)
+
+                else if (kartyHrace == kartyPC)
                 {
-                    Console.WriteLine("Trubko, máš více jak 21 tuplem jsi prohrál O_o");
+                    Console.WriteLine("No one wins!!");
+                }
+                else if (kartyHrace > 21)
+                {
+                    Console.WriteLine("You lost bacause you already have moore than 21! O_o");
                 }
                 System.Threading.Thread.Sleep(5000);
             }
             else
             {
-                Console.WriteLine("Nesprávný vstup!!!");
+                Console.WriteLine("Incorrect input!!!");
                 goto DalsiKarta;
             }
-            
+
         }
     }
 }
